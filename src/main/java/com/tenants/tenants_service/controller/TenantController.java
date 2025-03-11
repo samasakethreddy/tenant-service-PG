@@ -3,6 +3,7 @@ package com.tenants.tenants_service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.tenants.tenants_service.dto.TenantRequest;
@@ -18,6 +19,7 @@ public class TenantController {
     private TenantService tenantService;
 
     @PostMapping
+    @PreAuthorize("hasRole('OWNER')")
     Tenant postTenant(@RequestBody TenantRequest tenant) {
     	return tenantService.saveTenant(tenant);
     }
@@ -26,7 +28,8 @@ public class TenantController {
     List<TenantResponse> getAllTenants() {
         return tenantService.getTenants();
     }
-    
+
+    @PreAuthorize("hasAuthority('ROLE_TENANT')")
     @GetMapping("/{id}")
     public TenantResponse getTenant(@PathVariable("id") Integer id) {
         return tenantService.getTenantById(id);
@@ -34,6 +37,7 @@ public class TenantController {
     
     
     @PutMapping("changeRoom/{id}/{roomId}")
+    @PreAuthorize("hasRole('OWNER')")
     public TenantResponse changeTenantRoomId(@PathVariable("id") Integer id, @PathVariable("roomId") Integer roomId) {
         return tenantService.changeTenantRoomId(id, roomId);
     }

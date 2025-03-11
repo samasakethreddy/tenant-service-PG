@@ -24,9 +24,11 @@ public class Tenant {
 
 	private int roomId;
 
+	private String ownerId;
+
 	@Column(unique = true, nullable = false)
 	@NotNull(message = "Aadhar ID is required")
-	private int aadharId;
+	private String aadharId;
 
 	@Email(message = "Invalid email format")
 	@Column(unique = true, nullable = false)

@@ -32,9 +32,10 @@ public class TenantRequest {
 	@Min(value = 1, message = "Room ID must be a positive number")
 	private int roomId;
 
+	private String ownerId;
+
 	@NotNull(message = "Aadhar ID is required")
-	@Min(value = 100000000000L, message = "Invalid Aadhar ID")
-	private int aadharId;
+	private String aadharId;
 
 	@Email(message = "Invalid email format")
 	@NotBlank(message = "Email cannot be empty")

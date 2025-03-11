@@ -14,9 +14,10 @@ public class TenantResponse {
 
 	private int tenantId;
 	private String tenantName;
+	private String ownerId;
 	private int tenantAge;
 	private int roomId;
-	private int aadharId;
+	private String aadharId;
 	private String email;
 	private String phoneNumber;
 	private LocalDate joinDate;
