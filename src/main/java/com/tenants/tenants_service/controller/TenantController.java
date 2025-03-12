@@ -19,8 +19,8 @@ public class TenantController {
     private TenantService tenantService;
 
     @PostMapping
-    @PreAuthorize("hasRole('OWNER')")
     Tenant postTenant(@RequestBody TenantRequest tenant) {
+        System.out.println(tenant);
     	return tenantService.saveTenant(tenant);
     }
 
