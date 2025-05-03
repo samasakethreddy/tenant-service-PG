@@ -43,6 +43,11 @@ public class TenantService {
 		return tenants.stream().map(this::mapToResponse).toList();
 	}
 
+	public List<TenantResponse> getTenantsByOwnerId(String ownerId) {
+		List<Tenant> tenants = tenantRepository.findByOwnerId(ownerId);
+		return tenants.stream().map(this::mapToResponse).toList();
+	}
+
 	public TenantResponse getTenantById(Integer id) {
 		return tenantRepository.findById(id)
 				.map(this::mapToResponse)
@@ -79,4 +84,6 @@ public class TenantService {
 				.joinDate(tenant.getJoinDate())
 				.build();
 	}
+
+
 }

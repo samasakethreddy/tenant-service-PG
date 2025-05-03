@@ -29,6 +29,11 @@ public class TenantController {
         return tenantService.getTenants();
     }
 
+    @GetMapping("/tenants/{ownerId}")
+    List<TenantResponse> getTenantsByOwnerId(@PathVariable("ownerId") String ownerId) {
+        return tenantService.getTenantsByOwnerId(ownerId);
+    }
+
     @PreAuthorize("hasAuthority('ROLE_TENANT')")
     @GetMapping("/{id}")
     public TenantResponse getTenant(@PathVariable("id") Integer id) {

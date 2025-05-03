@@ -21,4 +21,5 @@ public interface TenantRepository extends JpaRepository<Tenant, Integer> {
 
     List<Tenant> findByRoomId(Integer roomId);
 
+    List<Tenant> findByOwnerId(String ownerId);
 }
